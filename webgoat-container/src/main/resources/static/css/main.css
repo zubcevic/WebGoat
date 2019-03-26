@@ -991,6 +991,7 @@ cookie-container {
 .attack-link.cur-page, .page-link.cur-page {
     color:#fff;
     font-weight:bold;
+    background-color: lightsalmon;
 }
 
 .page-link-wrapper {
