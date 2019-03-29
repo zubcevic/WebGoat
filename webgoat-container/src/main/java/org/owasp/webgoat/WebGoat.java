@@ -44,6 +44,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationContext;
@@ -104,6 +105,8 @@ public class WebGoat extends SpringBootServletInitializer {
     public EmbeddedServletContainerFactory servletContainer() {
         TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
         factory.setTomcatContextCustomizers(Arrays.asList(new CustomCustomizer()));
+        factory.addConnectorCustomizers(
+        		(TomcatConnectorCustomizer) connector -> connector.setProperty("sendReasonPhrase","true"));
         return factory;
     }
 
